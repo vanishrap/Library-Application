@@ -1,0 +1,34 @@
+﻿@model LibraryApplication.Models.PagingInfo
+@{
+    ViewBag.Title = "Index";
+    AjaxOptions ajaxOptions = new AjaxOptions
+    {
+        UpdateTargetId = "BooksTable"
+    };
+}
+
+
+<h2>Library Application</h2>
+@if (CurrentUserInfo.Reader.Name == "Administrator" && CurrentUserInfo.Reader.EMail == "Administrator")
+{
+    <p><b>
+    @Html.ActionLink("Add new book", "Create", "Admin")
+    </b></p>
+}
+@using (Ajax.BeginForm("BooksTable", ajaxOptions))
+{
+    <p>
+        @Html.CheckBox("availability", Model.Filtering[0]) Show only available books<br />
+        @Html.CheckBox("sorting", Model.Filtering[1]) Sort by title rather than authors<br />
+        <button type="submit" class="btn-success">Apply filters</button>
+
+        <div class="pager">
+            @Html.PageLinks(Model)
+        </div>
+    </p>
+}
+
+<div id="BooksTable">
+    @Html.Action("BooksTable", new { availability = Model.Filtering[0], sorting = Model.Filtering[1] })
+</div>
+

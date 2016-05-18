@@ -1,0 +1,73 @@
+﻿@model LibraryApplication.Models.BooksViewModel
+
+@{
+    ViewBag.Title = "Index";
+
+}
+
+
+<table class="table" id="BooksPages">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Books[0].Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Books[0].Quantity)
+        </th>
+        <th>
+            Authors
+        </th>
+
+    </tr>
+
+    @foreach (var item in Model.Books)
+    {
+        string notAvailableStyle = item.Quantity == 0 ? "background-color: rgba(255, 0, 0, .1)" : null;
+        <tr style="@notAvailableStyle">
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Quantity)
+            </td>
+            <td>
+                @foreach (var author in item.Authors)
+                {
+                    @Html.DisplayFor(modelItem => author.Name)
+                    @:
+                }
+            </td>
+
+            @if (CurrentUserInfo.Reader.Name == "Administrator" && CurrentUserInfo.Reader.EMail == "Administrator")
+            {
+                <td>
+                    <b>
+                        @Html.ActionLink("Change Quantity", "ChangeQuantity", "Admin", new { id = item.ID }, null) |
+                        @Html.ActionLink("History", "History", "Admin", new { id = item.ID }, null) |
+                        @Html.ActionLink("Delete", "Delete", "Admin", new { id = item.ID }, null)
+                    </b>
+                </td>
+
+            }
+
+            else if (CurrentUserInfo.Reader.Name != null)
+            {
+                if (item.Quantity != 0)
+                {
+                    <td>
+                        <b>
+                            @Html.ActionLink("Take a book", "TakeABook", "User", new { id = item.ID }, null)
+                        </b>
+                    </td>
+                }
+                else
+                {
+                    <td>
+                        <b>Sorry, this book is unavailable</b>
+                    </td>
+                }
+            }
+
+        </tr>
+    }
+</table>

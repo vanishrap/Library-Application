@@ -1,0 +1,24 @@
+﻿@using LibraryApplication.Models
+@model LibraryApplication.Models.Book
+
+@{
+    ViewBag.Title = "TakeABook";
+}
+
+<h2>TakeABook</h2>
+
+<p class="label-info">You have taken <i>"@Model.Name"</i> by 
+    <b>
+    @foreach(Author a in Model.Authors)
+    {
+        @Html.ValueFor(x => a.Name); @:
+    }
+    </b>
+    on @Model.DateBookTaken.Last()
+
+    </p>
+
+<p class="btn-link">@Html.ActionLink("Go to my books", "MyBooks")</p>
+<p>@Html.ActionLink("Return to all books", "Index")</p>
+
+

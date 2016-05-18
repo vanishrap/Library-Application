@@ -1,0 +1,10 @@
+﻿@{
+    ViewBag.Title = "MyBooks";
+}
+
+
+<h2>Library Application</h2>
+
+<div id="ReaderBooksTable">
+    @Html.Action("ReaderBooksTable", "Home", new { id = CurrentUserInfo.Reader.ID })
+</div>

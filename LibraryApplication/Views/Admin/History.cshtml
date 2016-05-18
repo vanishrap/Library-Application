@@ -1,0 +1,77 @@
+﻿@model LibraryApplication.Models.Book
+
+@{
+    ViewBag.Title = "History";
+}
+
+<h2>History</h2>
+
+<div>
+    <h4>Book</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Quantity)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Quantity)
+        </dd>
+
+        <dt>
+            Authors
+        </dt>
+
+        <dd>
+            @foreach (var author in Model.Authors)
+            {
+                @Html.DisplayFor(modelItem => author.Name)
+                @:
+                }
+        </dd>
+
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Change Quantity", "ChangeQuantity", "Admin", new { id = Model.ID }, null)  |
+    @Html.ActionLink("Back to List", "Index", "Home")
+</p>
+
+<table class="table" id="Books">
+    <tr>
+        <th>
+            Reader Name
+        </th>
+        <th>
+            Reader E-Mail
+        </th>
+        <th>
+            Date Book Taken
+        </th>
+
+    </tr>
+
+    @for (int i = 0; i < Model.DateBookTaken.Count; i++)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => Model.Readers[i].Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => Model.Readers[i].EMail)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => Model.DateBookTaken[i])
+            </td>
+        </tr>
+    }
+</table>

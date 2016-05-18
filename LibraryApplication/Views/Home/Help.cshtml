@@ -1,0 +1,19 @@
+﻿
+@{
+    ViewBag.Title = "Help";
+}
+
+<h2>Help</h2>
+@if (CurrentUserInfo.Reader.Name == null)
+{
+    @Html.Partial("HelpUnregistered");
+}
+else if (CurrentUserInfo.Reader.EMail == "Administrator" && CurrentUserInfo.Reader.Name == "Administrator")
+{
+    @Html.Partial("HelpAdmin");
+}
+else
+{
+    @Html.Partial("HelpUser");
+}
+

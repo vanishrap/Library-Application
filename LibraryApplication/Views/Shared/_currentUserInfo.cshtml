@@ -1,0 +1,29 @@
+﻿@model LibraryApplication.Models.Reader
+@if (Model.Name != null)
+{
+    <div class="navbar-collapse collapse">
+        <ul class="nav navbar-nav navbar-right">
+            @if (Model.Name == "Administrator" && Model.EMail == "Administrator")
+            {
+            <li> @Html.ActionLink("Readers management", "ReadersInfo", "Admin", new { area = "" }, htmlAttributes: new { @class = "navbar-brand" }); </li>
+            }
+            else
+            {
+            <li> @Html.ActionLink(Model.Name, "MyBooks", "User", new { area = "" }, htmlAttributes: new { @class = "navbar-brand" }); </li>
+            }
+            <li> @Html.ActionLink("Sign Out", "SignOut", "Home", new { area = "" }, htmlAttributes: new { @class = "navbar-brand" }); </li>
+        </ul>
+    </div>
+}
+
+else
+{
+
+    <div class="navbar-collapse collapse">
+        <ul class="nav navbar-nav navbar-right">
+            <li>@Html.ActionLink("Sign Up", "SignUp","Home", new { area = "" }, htmlAttributes: new { @class = "navbar-brand" })
+            <li>@Html.ActionLink("Sign In", "SignIn", "Home", new { area = "" }, htmlAttributes: new { @class = "navbar-brand" })</li>
+        </ul>
+    </div>
+
+}
