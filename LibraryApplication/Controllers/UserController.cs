@@ -44,8 +44,14 @@ namespace LibraryApplication.Controllers
                     MessageText = "You took the " + b.Name + " by " + authorsstring.Remove(authorsstring.Length - 2) + " in our library!"
                 };
 
-                
-                email.Send();
+                try
+                {
+                    email.Send();
+                }
+                catch (System.Net.Mail.SmtpException ex)
+                {
+                    ViewBag.Error = ex.Message;
+                }
                 return View(b);
             }
             else return RedirectToAction("Index", "Home");

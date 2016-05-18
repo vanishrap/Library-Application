@@ -7,6 +7,13 @@
 
 <h2>TakeABook</h2>
 
+@if (ViewBag.Error != null)
+{
+<p class="label-danger">
+    E-mail notification finished with an error:<br />
+    @ViewBag.Error
+</p>
+}
 <p class="label-info">You have taken <i>"@Model.Name"</i> by 
     <b>
     @foreach(Author a in Model.Authors)
