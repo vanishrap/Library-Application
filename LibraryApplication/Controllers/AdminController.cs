@@ -101,6 +101,7 @@ namespace LibraryApplication.Controllers
             if (CurrentUserInfo.Reader.Name == "Administrator" && CurrentUserInfo.Reader.EMail == "Administrator")
             {
                 List<Reader> readers = dao.GetAllReaders();
+                readers.RemoveAt(1);
                 return View(readers);
             }
             else return RedirectToAction("Index", "Home");
