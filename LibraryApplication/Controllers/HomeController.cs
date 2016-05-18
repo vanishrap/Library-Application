@@ -92,7 +92,7 @@ namespace LibraryApplication.Controllers
             }
             else
             {
-
+                ViewBag.Error = "You have entered wrong name or E-Mail!";
                 return View(R);
             }
         }
@@ -112,7 +112,12 @@ namespace LibraryApplication.Controllers
                 CurrentUserInfo.Reader = R;
                 return RedirectToAction("Index");
             }
-            else return View();
+
+            else
+            {
+
+                return View();
+            }
         }
 
         public ActionResult SignOut()
