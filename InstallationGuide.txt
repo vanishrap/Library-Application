@@ -1,7 +1,7 @@
 This is ASP.NET MVC Library Application. 
 I've used Visual Studio 2015 Enterprise to inplement this app & MS SQL Server & ADO.NET for database integration.
 So to run this app you need to have Windows OS and a couple of frameworks you usually need using ASP.NET MVC.
-You can find database files and its detached backup in \LibraryApplication\LibraryApplication\App_Data\
+You need to download database files (https://www.dropbox.com/sh/4garpumy5vwegx7/AAAq6Ix2tva7mm5cCGfumQaZa?dl=0) and its detached backup and include in \LibraryApplication\LibraryApplication\App_Data\ 
 There are three "roles" available in library application. Here's login data:
 1. Unregistered user (no data needed)
 2. Reader (e-mail: vanishrap@gmail.com, name: Vlad) 
