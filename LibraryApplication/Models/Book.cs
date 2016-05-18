@@ -11,7 +11,7 @@ namespace LibraryApplication.Models
         [Required(ErrorMessage = "Please enter book name")]
         public string Name { get; set; }
 
-        public int Quantity = 0;
+        public int Quantity { get; set; }
         public List<Author> Authors = new List<Author>();
         public List<Reader> Readers = new List<Reader>();
         public List<DateTime> DateBookTaken = new List<DateTime>();
